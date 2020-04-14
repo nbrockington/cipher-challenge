@@ -24,3 +24,7 @@ For example, to find the 10 most frequent 4-grams in "ciphertext":
 
 `>>> ranked_ngrams = k_most_frequent_ngrams(ciphertext, 4, 10)`
 
+# Known issues
+
+-- The ciphertext inputs must have all newlines removed before being passed as arguments.
+
