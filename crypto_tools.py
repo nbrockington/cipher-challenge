@@ -16,6 +16,7 @@
 # and the element at that index represents the corresponding
 # ciphertext letter.
 # 
+# Written by Nela Brockington, 12th April 2020, London UK.
 
 
 # Procedure to load ciphertext from a *.txt file (NB. new lines and
