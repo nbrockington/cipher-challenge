@@ -10,8 +10,6 @@
 # is_AtoZ_p( char )                        -> bool
 # solve_affine_shift_eq( cipher1 , plain1 , cipher2 , plain2 ) -> coeff
 #
-# Written by Nela Brockington, 13th April 2020, London UK.
-
 
 # Procedure to suggest up to n decryption strategies for a ciphertext
 # based on letter, bigram and trigram frequency analyses:
