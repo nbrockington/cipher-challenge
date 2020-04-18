@@ -22,7 +22,17 @@ To find the "k" most frequent "n"-grams in a given text, along with their percen
 
 For example, to find the 10 most frequent 4-grams in "ciphertext":
 
-`>>> ranked_ngrams = k_most_frequent_ngrams(ciphertext, 4, 10)`
+`>>> ranked_ngrams = k_most_frequent_ngrams( ciphertext , 4 , 10 )`
+
+To partially decrypt plaintext with a "partial" key where only some letter substitutions are known/guessed:
+
+`>>> plaintext = decrypt_with_partial_key( ciphertext , partial_key )`
+
+(NB. A key is a length-26 list of integers 0-25 representing letters A-Z. Each ciphertext letter is in the index position of the plaintext letter it is substituting. For an empty substitution, use 26.)
+
+To update a key with a new (or no) substitution from plaintext letter "plainchar" to ciphertext letter "cipherchar":
+
+`>>> new_key = add_substitution_to_key( key , plainchar , cipherchar )`
 
 # Known issues
 
