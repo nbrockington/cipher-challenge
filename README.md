@@ -2,7 +2,9 @@
 Suite of python procedures to analyse and decrypt simple ciphers.
 
 
-# Usage
+# Tools and usage
+
+# Caesar and affine shift ciphers:
 
 To decrypt a putative Caesar cipher with a given "shift":
 
@@ -11,6 +13,8 @@ To decrypt a putative Caesar cipher with a given "shift":
 To decrypt a putative affine shift cipher x -> ax + b mod 26 with given coefficients "a" and "b":
 
 `>>> plaintext = decrypt_affine( ciphertext , a , b )`
+
+# Frequency analysis and trial-and-error mono-alphabetic substitution decryption:
 
 To perform a frequency analysis on a ciphertext, returning a list of most common letters, bigrams, and trigrams with their percentage frequencies and up to "n" suggestions for possible Caesar cipher shift and/or affine shift coefficients:
 
@@ -34,7 +38,18 @@ To update a key with a new (or no) substitution from plaintext letter "plainchar
 
 `>>> new_key = add_substitution_to_key( key , plainchar , cipherchar )`
 
+# Transposition ciphers:
+
+To decrypt a write-by-row, read-by-row transposition cipher with a given permutation list "perm":
+
+`>>> plaintext = decrypt_transposition_with_perm( ciphertext , perm , "row" )`
+
+To decrypt a write-by-row, read-by-column transposition cipher with a given permutation list "perm":
+
+`>>> plaintext = decrypt_transposition_with_perm( ciphertext , perm , "column")`
+
+
 # Known issues
 
--- The ciphertext inputs must have all newlines removed before being passed as arguments.
+-- The ciphertext inputs must have all newlines removed before being passed as arguments. Ideally they should all be in uppercase letters as the frequency analysis procedures depend on this.
 
