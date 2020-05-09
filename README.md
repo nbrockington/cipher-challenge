@@ -48,8 +48,13 @@ To decrypt a write-by-row, read-by-column transposition cipher with a given perm
 
 `>>> plaintext = decrypt_transposition_with_perm( ciphertext , perm , "column")`
 
+For brute-force decryption of a putative transposition cipher:
+
+`>>> all_ranked_perms = brute_force_decrypt_transposition( ciphertext , ngrams_to_count , read-by )`
+
+(NB. This will cycle through all possible permutations of all putative key lengths that are factors of ciphertext length, and rank them by number of ngrams (words) found in the resulting text. It will print the text from the top-ranked permutation of each key length and return a nested list of ranked permutations for all putative key lengths.)
 
 # Known issues
 
--- The ciphertext inputs must have all newlines removed before being passed as arguments. Ideally they should all be in uppercase letters as the frequency analysis procedures depend on this.
+-- The ciphertext inputs must have all newlines removed before being passed as arguments. Ideally they should all be in uppercase letters as some of the transposition and frequency analysis procedures depend on this.
 
