@@ -54,7 +54,23 @@ For brute-force decryption of a putative transposition cipher:
 
 (NB. This will cycle through all possible permutations of all putative key lengths that are factors of ciphertext length, and rank them by number of ngrams (in this case, "THE", "TH", and "ER") found in the resulting text. It will print the text from the top-ranked permutation of each key length and return a nested list of ranked permutations for all putative key lengths.)
 
+# Vigenere ciphers
+
+To decrypt a Vigenere cipher with a known list of Caesar shifts (where list_of_shifts is, e.g., [18, 14, 4]):
+
+`>>> plaintext = decrypt_vigenere( ciphertext , list_of_shifts )`
+
+To obtain suggestions for possible Caesar shifts for the substrings of a Vigenere cipher of keyword length k:
+
+`>>> vigenere_suggestions( ciphertext , k )`
+
+To print the average index of coincidence (IOC) value for substrings of the ciphertext under different putative Vigenere keyword lengths from 1 to 12 (NB. random text has IOC ~= 0.038466, standard English text has IOC ~= 0.0686):
+
+`>>> print_ioc_analysis( ciphertext )`
+
 # Known issues
 
 -- The ciphertext inputs must have all newlines removed before being passed as arguments. Ideally they should all be in uppercase letters as some of the transposition and frequency analysis procedures depend on this.
+
+-- For transposition and vigenere procedures, all punctuation must first be removed.
 
