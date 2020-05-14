@@ -13,6 +13,7 @@
 #                               , read_by ) -> ranked_perms
 #
 # NB. Argument read_by = "rows" | "columns"
+# NB. Example list of ngrams_to_count: ["THE", "TH", "ER"]
 #
 # count_common_ngrams_in_text( text , ngrams_to_count ) -> count
 # count_ngram_occurance( text , ngram ) -> count
