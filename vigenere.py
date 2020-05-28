@@ -1,4 +1,4 @@
-# Suite of python procedures to brute-force decrypt a  Vigenere cipher
+# Suite of python procedures to help decrypt a Vigenere cipher
 #
 # >> from vigenere import *
 #
@@ -10,6 +10,7 @@
 # average_ioc_for_k( text , k ) -> average_ioc
 # extract_substring_m_mod_k( text , m , k ) -> substring
 # calculate_ioc( text ) -> ioc
+# remove_spaces( input_text ) -> output_text
 #
 # Written by Nela Brockington, 9th May 2020, London UK. 
 # Edited by Nela Brockington, 10th May 2020, London UK.
@@ -20,6 +21,14 @@
 import freq_analysis
 
 import crypto_tools
+
+# Alphabet key:
+
+alphabet_key = ([("A", 0), ("B", 1), ("C", 2), ("D", 3), ("E", 4), ("F", 5), 
+                 ("G", 6), ("H", 7), ("I", 8), ("J", 9), ("K", 10), ("L", 11), 
+                 ("M", 12), ("N", 13), ("O", 14), ("P", 15), ("Q", 16), 
+                 ("R", 17), ("S", 18), ("T", 19), ("U", 20), ("V", 21), 
+                 ("W", 22), ("X", 23), ("Y", 24), ("Z", 25)])
 
 
 # Procedure to decrypt a Vigenere cipher by applying Caesar decryption
@@ -135,7 +144,7 @@ def vigenere_suggestions( ciphertext , k ):
 
       print( "For substring " + str( m ) + ": if E -> " 
              + str( top_letter ) + ", possible Caesar shift of "
-             + str( ( ord( top_letter[ 0 ][ 0 ] ) - 65 ) % 26 ) )
+             + str( ( ord( top_letter[ 0 ][ 0 ] ) - 69 ) % 26 ) )
 
    return
       
@@ -177,7 +186,7 @@ def average_ioc_for_k( text , k ):
 # Procedure to extract a particular substring from a putative Vigenere
 # ciphertext, where the substring is defined by key length k and index
 # modulo value m: (NB. In Python, string and list indices start from
-# 0.)
+# 0, so to get the first string use m = 0.)
 
 def extract_substring_m_mod_k( text , m , k ):
 
