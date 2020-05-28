@@ -13,7 +13,7 @@
 #                               , read_by ) -> ranked_perms
 #
 # NB. Argument read_by = "rows" | "columns"
-# NB. Example list of ngrams_to_count: ["THE", "TH", "ER"]
+# NB. An example list of ngrams_to_count: ["THE", "ER", "TH"]
 #
 # count_common_ngrams_in_text( text , ngrams_to_count ) -> count
 # count_ngram_occurance( text , ngram ) -> count
@@ -44,7 +44,7 @@ def brute_force_decrypt_transposition( ciphertext , ngrams_to_count , read_by ):
    n_char = len( remove_spaces( ciphertext ) )
 
    poss_key_lengths = ( list ( filter( ( lambda x: n_char % x == 0 ) 
-                                       , range( 2 , 9 ) ) ) )
+                                       , range( 2 , 10 ) ) ) )
 
    all_ranked_perms = []
 
