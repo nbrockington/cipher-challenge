@@ -74,3 +74,4 @@ To print the average index of coincidence (IOC) value for substrings of the ciph
 
 -- For transposition and vigenere procedures, all punctuation must first be removed.
 
+-- Goals: (1) brute force Vigenere decryption, with optional list of shifts to try; (2) Morse code translator; 
