@@ -13,13 +13,12 @@
 # Written by Nela Brockington, 13th April 2020, London UK.
 
 
-
 # Procedure to suggest up to n decryption strategies for a ciphertext
 # based on letter, bigram and trigram frequency analyses:
 
 def decrypt_suggestions( ciphertext , n ):
 
-   letter_freq = k_most_frequent_ngrams( ciphertext , 1 , 8 )
+   letter_freq = k_most_frequent_ngrams( ciphertext , 1 , 27)
 
    bigram_freq = k_most_frequent_ngrams( ciphertext , 2 , 3 )
 
@@ -129,18 +128,18 @@ def decrypt_suggestions( ciphertext , n ):
 
 
 # Procedure to solve a pair of simultaneous equations of the form
-# "a(cipher) + b = plain mod 26" and return coefficients a and
+# "a(plain) + b = cipher mod 26" and return coefficients a and
 # b. Arguments are numbers 0-25 to represent A-Z.
 
-def solve_affine_shift_eq( cipher1 , plain1 , cipher2 , plain2 ):
+def solve_affine_shift_eq( plain1 , cipher1 , plain2 , cipher2 ):
 
    mult_inv = ( [ 0 , 1 , 0 , 9 , 0 , 21 , 0 , 15 , 0 , 3 , 0 , 19 , 0 , 
               0 , 0 , 7 , 0 , 23 , 0 , 11 , 0 , 5 , 0 , 17 , 0 , 25 ] )
 
-   a = ( mult_inv[ ( cipher1 - cipher2 ) % 26 ] 
-         * ( ( plain1 - plain2 ) % 26 ) % 26 )
+   a = ( mult_inv[ ( plain1 - plain2 ) % 26 ] 
+         * ( ( cipher1 - cipher2 ) % 26 ) % 26 )
 
-   b =  ( plain1 - cipher1 * a ) % 26
+   b =  ( cipher1 - plain1 * a ) % 26
 
    return [ a , b ];
 
@@ -159,7 +158,7 @@ def get_first_elems_of_tuples( tup_list , n ):
 def k_most_frequent_ngrams( text , n , k ):
 
    list_of_ngrams = split_into_ngrams( text , n )
-
+   
    total_freq = len( list_of_ngrams )
 
    unique_list = list( set( list_of_ngrams ) )
@@ -174,7 +173,7 @@ def k_most_frequent_ngrams( text , n , k ):
 
 
    
-# Procedure to parse text into a list of its consecutive ngrams::
+# Procedure to parse text into a list of its consecutive ngrams:
 
 def split_into_ngrams( text , n ):
 
