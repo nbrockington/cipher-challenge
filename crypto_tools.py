@@ -9,6 +9,7 @@
 # decrypt_with_key( ciphertext , key ) -> plaintext
 # decrypt_caesar( ciphertext , shift ) -> plaintext
 # decrypt_affine( ciphertext , a , b ) -> plaintext
+# decrypt_words_sequential_caesar( ciphertext ) -> plaintext
 # load_ciphertext_from_file( path_and_filename ) -> ciphertext
 #
 # Convention: keys are lists that represent letters numerically (0 to
@@ -16,7 +17,7 @@
 # and the element at that index represents the corresponding
 # ciphertext letter.
 # 
-# Written by Nela Brockington, 12th April 2020, London UK.
+# Written by Nela Brockington, 12th April 2020, London UK. 
 
 
 # Procedure to load ciphertext from a *.txt file (NB. new lines and
@@ -140,3 +141,25 @@ def invertible_key_p( key ):
 
 
 
+# Procedure to decrypt each word in a ciphertext separately with a
+# Caesar decryption, using shifts 1 - 26 sequentially on the words:
+
+def decrypt_words_sequential_caesar( ciphertext ):
+
+  count = 1
+
+  list_of_words = ciphertext.split()
+
+  list_of_plaintext_words = []
+
+  for word in list_of_words:
+
+    decrypted_word = crypto_tools.decrypt_caesar( word , ( count % 26 ) )
+
+    list_of_plaintext_words.append( decrypted_word )
+
+    count = count + 1
+
+  plaintext = ' '.join( list_of_plaintext_words )
+
+  return plaintext
